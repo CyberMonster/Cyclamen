@@ -1,4 +1,4 @@
-name: .NET Core
+name: Build and push
 
 on:
   push:
@@ -19,6 +19,7 @@ jobs:
       run: dotnet build --configuration Release --output ./bin/release --version-suffix ${{ github.run_number }}
   
   copyArtifacts:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
