@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  buildAndPublish:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -17,11 +17,6 @@ jobs:
         dotnet-version: 3.1.101
     - name: Build with dotnet
       run: dotnet build --configuration Release --output ./bin/release --version-suffix ${{ github.run_number }}
-  
-  copyArtifacts:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
     - uses: actions/checkout@v2
     - uses: actions/upload-artifact@v1
       with:
