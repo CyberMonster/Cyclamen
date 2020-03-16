@@ -1,0 +1,29 @@
+name: .NET Core
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Build with dotnet
+      run: dotnet build --configuration Release --output ./bin/release --version-suffix ${{ github.run_number }}
+  
+  copyArtifacts:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: mkdir -p ./bin/release/Cyclamen.0.1.0-${{ github.run_number }}.nupkg
+    - uses: actions/upload-artifact@v1
+      with:
+        name: release-0.1.0-${{ github.run_number }}
+        path: ./bin/release/Cyclamen.0.1.0-${{ github.run_number }}.nupkg
