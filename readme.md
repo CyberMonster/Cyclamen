@@ -6,7 +6,7 @@ It better to use constructor injection. But some times when you can't use non de
 
 `[Inject]` usage:
 
-```
+```CSharp
 public class Foo
 {
     [Inject]
@@ -17,8 +17,7 @@ public class Foo
 }
 ```
 
-
-```
+```CSharp
 public class Foo
 {
     [Inject]
