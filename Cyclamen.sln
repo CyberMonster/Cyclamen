@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cyclamen", "Cyclamen\Cyclamen.csproj", "{1759534C-8028-4548-94B6-90E0C013D0FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cyclamen", "src\Cyclamen\Cyclamen.csproj", "{1759534C-8028-4548-94B6-90E0C013D0FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cyclamen.Tests", "Cyclamen.Tests\Cyclamen.Tests.csproj", "{4687981A-234C-4502-AFBD-D955CE7F76E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cyclamen.Tests", "src\Cyclamen.Tests\Cyclamen.Tests.csproj", "{4687981A-234C-4502-AFBD-D955CE7F76E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
