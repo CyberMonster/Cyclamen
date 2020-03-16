@@ -21,3 +21,5 @@ jobs:
       with:
         name: release-0.1.0-${{ github.run_number }}
         path: ./bin/release/Cyclamen.0.1.0-${{ github.run_number }}.nupkg
+    - name: Push to github
+      run: dotnet nuget push ./bin/release/Cyclamen.0.1.0-${{ github.run_number }}.nupkg" --source "github" 
