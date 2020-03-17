@@ -14,6 +14,7 @@ namespace Cyclamen.Mobile.Views.CarDetail
         public CarDetailPage()
         {
             this.InjectProperties(App.Factory);
+            BindingContext = _carDetailPageViewModel;
             InitializeComponent();
         }
 

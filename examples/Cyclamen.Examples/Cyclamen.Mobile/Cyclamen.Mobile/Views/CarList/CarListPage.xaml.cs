@@ -18,6 +18,7 @@ namespace Cyclamen.Mobile.Views.CarList
         public CarListPage()
         {
             this.InjectProperties(App.Factory);
+            BindingContext = _carListPageViewModel;
             InitializeComponent();
         }
 
