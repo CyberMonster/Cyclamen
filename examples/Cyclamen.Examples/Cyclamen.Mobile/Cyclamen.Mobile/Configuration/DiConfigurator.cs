@@ -1,8 +1,11 @@
 ﻿using Cyclamen.Mobile.Helpers;
+using Cyclamen.Mobile.Models.CarDetailPage;
 using Cyclamen.Mobile.Models.MainPage;
 using Cyclamen.Mobile.Repositories.Cars;
-using Cyclamen.Mobile.ViewModels;
-using Cyclamen.Mobile.Views;
+using Cyclamen.Mobile.ViewModels.CarDetail;
+using Cyclamen.Mobile.ViewModels.CarList;
+using Cyclamen.Mobile.Views.CarDetail;
+using Cyclamen.Mobile.Views.CarList;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using Xamarin.Forms;
@@ -18,9 +21,13 @@ namespace Cyclamen.Mobile.Configuration
                 .AddSingleton<ICopyFilesStartupTask, CopyFilesStartupTask>()
                 .AddSingleton<ICarRepository, CarRepository>()
 
-                .AddTransient<IMainPage, MainPage>()
+                .AddTransient<ICarListPage, CarListPage>()
                 .AddTransient<IMainPageModel, MainPageModel>()
-                .AddTransient<IMainPageViewModel, MainPageViewModel>()
+                .AddTransient<ICarListPageViewModel, CarListPageViewModel>()
+
+                .AddTransient<ICarDetailPage, CarDetailPage>()
+                .AddTransient<ICarDetailPageModel, CarDetailPageModel>()
+                .AddTransient<ICarDetailPageViewModel, CarDetailPageViewModel>()
 
                 .BuildServiceProvider();
 

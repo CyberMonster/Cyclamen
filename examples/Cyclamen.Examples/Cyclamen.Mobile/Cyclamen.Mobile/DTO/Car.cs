@@ -9,8 +9,7 @@ namespace Cyclamen.Mobile.DTO
         public int Id { get; set; }
         public int EngineId { get; set; }
         public int WheelsId { get; set; }
-        public int Corpus { get; set; }
-        public int ManufactureId { get; set; }
+        public int CorpusId { get; set; }
         public int ModelId { get; set; }
     }
 }

@@ -1,31 +1,21 @@
 ﻿using Cyclamen.Mobile.Models.MainPage;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading.Tasks;
 
-namespace Cyclamen.Mobile.ViewModels
+namespace Cyclamen.Mobile.ViewModels.CarList
 {
-    public interface IMainPageViewModel : INotifyPropertyChanged
-    {
-        ObservableCollection<CarModel> Cars { get; set; }
-        Task ReloadCars();
-    }
-
-    public class MainPageViewModel : IMainPageViewModel
+    public class CarListPageViewModel : ICarListPageViewModel
     {
         [Inject]
-        private IMainPageModel _mainPageModel;
+        private readonly IMainPageModel _mainPageModel;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public MainPageViewModel()
+        public CarListPageViewModel()
             => this.InjectProperties(App.Factory);
 
-        private int a = 0;
-        public string Text { get => a.ToString(); set => OnPropertyChanged(nameof(Text)); }
-
-        private ObservableCollection<CarModel> cars;
+        private ObservableCollection<CarModel> cars = new ObservableCollection<CarModel>();
         public ObservableCollection<CarModel> Cars
         {
             get => cars;
@@ -37,11 +27,7 @@ namespace Cyclamen.Mobile.ViewModels
         }
 
         public async Task ReloadCars()
-        {
-            a++;
-            Text = "";
-            Cars = new ObservableCollection<CarModel>(await _mainPageModel.LoadCars());
-        }
+            => Cars = new ObservableCollection<CarModel>(await _mainPageModel.LoadCars());
 
         protected void OnPropertyChanged(string propName)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));

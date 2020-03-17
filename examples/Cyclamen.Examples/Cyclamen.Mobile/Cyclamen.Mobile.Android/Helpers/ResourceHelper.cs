@@ -18,8 +18,12 @@ namespace Cyclamen.Mobile.Droid.Helpers
         public async Task CopyResourceToFileSystem(string resourceName, bool forceUpdate = false)
         {
             var path = GetResourcePath(resourceName);
-            if (!File.Exists(path) || forceUpdate)
+            var isFileExist = File.Exists(path);
+            if (!isFileExist || forceUpdate)
             {
+                if (isFileExist)
+                    File.Delete(path);
+
                 var assetStream = Forms.Context.Assets.Open(resourceName);
 
                 var fileStream = new FileStream(path, FileMode.OpenOrCreate);

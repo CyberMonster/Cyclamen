@@ -1,5 +1,5 @@
 ﻿using Cyclamen.Mobile.Configuration;
-using Cyclamen.Mobile.Views;
+using Cyclamen.Mobile.Views.CarList;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;
@@ -13,23 +13,12 @@ namespace Cyclamen.Mobile
 
         static App()
             => Factory = new ServiceCollection().Configure();
+
         public App()
         {
             InitializeComponent();
             Task.Run(() => Factory.GetService<ICopyFilesStartupTask>().Run());
-            MainPage = (Page)Factory.GetService<IMainPage>();
-        }
-
-        protected override void OnStart()
-        {
-        }
-
-        protected override void OnSleep()
-        {
-        }
-
-        protected override void OnResume()
-        {
+            MainPage = new NavigationPage((Page)Factory.GetService<ICarListPage>());
         }
     }
 }

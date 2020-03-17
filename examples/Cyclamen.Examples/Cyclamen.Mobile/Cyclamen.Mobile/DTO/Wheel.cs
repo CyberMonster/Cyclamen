@@ -3,5 +3,5 @@
 namespace Cyclamen.Mobile.DTO
 {
     [Table("Wheels")]
-    public class Wheel : DefaultEntity { }
+    public class Wheels : DefaultEntity { }
 }
