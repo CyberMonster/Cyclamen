@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cardetail="clr-namespace:Cyclamen.Mobile.ViewModels.CarDetail"
+             x:Class="Cyclamen.Mobile.Views.CarDetail.CarDetailPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Manufacture:"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Car.Manufacture.Name}"/>
+                <Label Grid.Row="1" Grid.Column="0" Text="Model:"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Car.Model.Name}"/>
+                <Label Grid.Row="2" Grid.Column="0" Text="Engine:"/>
+                <Label Grid.Row="2" Grid.Column="1" Text="{Binding Car.Engine.Name}"/>
+                <Label Grid.Row="3" Grid.Column="0" Text="Wheels:"/>
+                <Label Grid.Row="3" Grid.Column="1" Text="{Binding Car.Wheels.Name}"/>
+                <Label Grid.Row="4" Grid.Column="0" Text="Corpus:"/>
+                <Label Grid.Row="4" Grid.Column="1" Text="{Binding Car.Corpus.Name}"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
