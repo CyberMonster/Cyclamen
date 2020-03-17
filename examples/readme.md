@@ -28,4 +28,4 @@ public partial class CarListPage : ContentPage, ICarListPage
     }
 ```
 And result of run that code:
-![Emulator output](http://prntscr.com/rhsjzp)
+![Emulator output](https://raw.githubusercontent.com/CyberMonster/Cyclamen/master/examples/injectResult.jpg)
