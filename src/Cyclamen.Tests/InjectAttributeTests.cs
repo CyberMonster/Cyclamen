@@ -17,6 +17,9 @@ namespace Cyclamen.Tests
                 .AddSingleton<IIT2, IIIT2>()
                 .AddSingleton<IIT3, IIIT3>()
                 .AddSingleton<IIT4, IIIT4>()
+                .AddSingleton<IIT5, IIIT5>()
+                .AddSingleton((sp) => sp.GetService<IIT5>() as IIIT5)
+                .AddSingleton<IIIT6>()
                 .BuildServiceProvider();
 
         public interface IIT1 { }
@@ -61,10 +64,32 @@ namespace Cyclamen.Tests
                 => this.InjectProperties(_factory);
         }
 
+        public interface IIT5 { }
+        public class IIIT5 : IIT5 { }
+        public class InjectionTest5
+        {
+            [Inject]
+            private IIT5 _1 { get; set; }
+            [Inject]
+            private IIIT5 _2 { get; set; }
+            public InjectionTest5()
+                => this.InjectProperties(_factory);
+        }
+
+        public class IIIT6 { }
+        public class InjectionTest6
+        {
+            [Inject]
+            private IIIT6 _;
+            public InjectionTest6()
+                => this.InjectProperties(_factory);
+        }
+
         [Theory]
         [InlineData(typeof(InjectionTest1), typeof(IIT1))]
-        [InlineData(typeof(InjectionTest2), typeof(IIT2), "Property set method not found.")]
+        [InlineData(typeof(InjectionTest2), typeof(IIT2), "One or more errors occurred. (Property set method not found.)")]
         [InlineData(typeof(InjectionTest3), typeof(IIT3))]
+        [InlineData(typeof(InjectionTest6), typeof(IIIT6))]
         public void CheckInjection(Type testedType, Type interfaceType, string errorMessage = null)
         {
             try
@@ -84,6 +109,7 @@ namespace Cyclamen.Tests
 
         [Theory]
         [InlineData(typeof(InjectionTest4), typeof(IIT4), 2)]
+        [InlineData(typeof(InjectionTest5), typeof(IIT5), 2)]
         public void CheckMultipleInjection(Type testedType, Type interfaceType, int count)
         {
             var values = CreateAndInject(testedType);

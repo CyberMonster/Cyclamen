@@ -24,14 +24,17 @@ namespace Cyclamen
                 var pInfo = member as PropertyInfo;
                 var fInfo = member as FieldInfo;
                 var memberType = pInfo?.PropertyType ?? fInfo.FieldType;
-                if (!memberType.IsInterface)
-                    (errors ??= new List<Exception>()).Add(
-                        new NotSupportedException("Can't inject non interface type via property."));
-                else
+                try
+                {
                     if (pInfo != null)
                         pInfo.SetValue(injectTarget, serviceProvider.GetService(memberType));
                     else
                         fInfo.SetValue(injectTarget, serviceProvider.GetService(memberType));
+                }
+                catch (Exception ex)
+                {
+                    (errors ??= new List<Exception>()).Add(ex);
+                }
             }
 
             if (errors != null)

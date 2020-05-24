@@ -1,3 +1,5 @@
+![Build and push](https://github.com/CyberMonster/Cyclamen/workflows/Build%20and%20push/badge.svg)
+
 Present `[Inject]` attribute.
 
 This attribute is an easy way to make dependency injection via property or field.
